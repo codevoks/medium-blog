@@ -2,7 +2,8 @@ import { Hono } from 'hono'
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { decode, sign, verify } from 'hono/jwt'
-import { SignUpInput,SignInInput } from '@codevoks/medium-common'
+//import { SignupInput,SigninInput } from '@100xdevs/medium-common'
+import { SignupInput,SigninInput } from '@codevoks/medium-common-global'
 
 const userRouter = new Hono<{
     Bindings : {
@@ -16,7 +17,8 @@ userRouter.post('/signup', async (c) => {
       datasourceUrl : c.env.DATABASE_URL,
     }).$extends(withAccelerate());
 
-    const parsePayLoad = SignUpInput.safeParse(c.body);
+    const body = await c.req.json();
+    const parsePayLoad = SignUpInput.safeParse(body);
     if(!parsePayLoad.success){
       c.status(400);
       return c.json({
@@ -56,7 +58,7 @@ userRouter.post('/signup', async (c) => {
     }).$extends(withAccelerate());
   
     const body = await c.req.json();
-    const parsePayLoad = SignInInput.safeParse(c.body);
+    const parsePayLoad = SignInInput.safeParse(body);
     if(!parsePayLoad.success){
       c.status(400);
       return c.json({

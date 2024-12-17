@@ -5,7 +5,10 @@
     "deploy": "wrangler deploy --minify"
   },
   "dependencies": {
-    "@codevoks/medium-common": "^1.0.0",
+    "@100xdevs/medium-common": "^1.0.0",
+    "@codevoks/blog-common": "^1.0.0",
+    "@codevoks/medium-common": "^1.0.1",
+    "@codevoks/medium-common-global": "^1.0.0",
     "@prisma/client": "^6.0.1",
     "@prisma/extension-accelerate": "^1.2.1",
     "hono": "^4.6.13",

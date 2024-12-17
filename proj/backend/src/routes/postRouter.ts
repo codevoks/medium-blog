@@ -2,7 +2,10 @@ import { Hono } from 'hono'
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { decode, sign, verify } from 'hono/jwt'
-import { CreatePostInput,UpdatePostInput } from '@codevoks/medium-common'
+//import { CreatePostInput,UpdatePostInput } from '@codevoks/blog-common'
+import { CreatePostInput,UpdatePostInput } from '@codevoks/medium-common-global'
+import { SignupInput,SigninInput } from '@100xdevs/medium-common'
+
 
 const postRouter = new Hono<{
     Bindings : {
@@ -41,9 +44,9 @@ postRouter.post('/', async (c) => {
         datasourceUrl : c.env.DATABASE_URL,
       }).$extends(withAccelerate());
       const body = await c.req.json();
-      const parsePayLoad = CreatePostInput.safeParse(c.body);
+      const parsePayLoad = CreatePostInput.safeParse(body);
       if(!parsePayLoad.success){
-        c.status(400);
+        c.status(411);
         return c.json({
             message: "Invalid Inputs"
         })
@@ -73,9 +76,9 @@ postRouter.put('/', async (c) => {
         datasourceUrl : c.env.DATABASE_URL,
       }).$extends(withAccelerate());
       const body = await c.req.json();
-      const parsePayLoad = UpdatePostInput.safeParse(c.body);
+      const parsePayLoad = UpdatePostInput.safeParse(body);
       if(!parsePayLoad.success){
-        c.status(400);
+        c.status(411);
         return c.json({
             message: "Invalid Inputs"
         })
