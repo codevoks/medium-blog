@@ -23,6 +23,6 @@ export const updatePostInput = z.object({
 });
 
 export type SignUpInput = z.infer<typeof signUpInput>;
-export type SignIpInput = z.infer<typeof signInInput>;
+export type SignInInput = z.infer<typeof signInInput>;
 export type CreatePostInput = z.infer<typeof createPostInput>;
 export type UpdatePostInput = z.infer<typeof updatePostInput>;
