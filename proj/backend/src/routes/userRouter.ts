@@ -3,8 +3,8 @@ import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { decode, sign, verify } from 'hono/jwt'
 //import { SignupInput,SigninInput } from '@100xdevs/medium-common'
-//import { SignupInput,SigninInput } from '@codevoks/medium-common-global'
-import { SignUpInput,SignIpInput } from '../../../common/dist/index'
+import { SignupInput,SigninInput } from '@codevoks/test'
+//import { SignupInput,SigninInput } from '../../../common/dist/index'
 
 const userRouter = new Hono<{
     Bindings : {

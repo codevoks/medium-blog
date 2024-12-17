@@ -2,9 +2,8 @@ import { Hono } from 'hono'
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { decode, sign, verify } from 'hono/jwt'
-//import { CreatePostInput,UpdatePostInput } from '@codevoks/blog-common'
-import { CreatePostInput,UpdatePostInput } from '@codevoks/medium-common-global'
-import { SignupInput,SigninInput } from '@100xdevs/medium-common'
+//import { SignupInput,SigninInput } from '@100xdevs/medium-common'
+import { SignupInput,SigninInput } from '@codevoks/test'
 
 
 const postRouter = new Hono<{
